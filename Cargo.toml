@@ -1,0 +1,6 @@
+[package]
+name = "vk_sandbox"
+version = "0.1.0"
+authors = ["James Longino <james.longino@gmail.com>"]
+
+[dependencies]
