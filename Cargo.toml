@@ -4,3 +4,7 @@ version = "0.1.0"
 authors = ["James Longino <james.longino@gmail.com>"]
 
 [dependencies]
+vulkano = "0.9"
+vulkano-shader-derive = "0.9"
+vulkano-win = "0.9"
+winit = "0.11"
