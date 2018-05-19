@@ -54,53 +54,10 @@ impl<'a> Renderer<'a> {
     }
 }
 
-fn create_instance() -> Arc<Instance> {
-    let extensions = InstanceExtensions {
-        khr_surface: true,
-        khr_xlib_surface: true,
-        ext_debug_report: true,
-        ..InstanceExtensions::none()
-    };
 
-    let layer = "VK_LAYER_LUNARG_standard_validation";
-    let layers = vec![&layer];
-
-    let instance_try = Instance::new(None, &extensions, layers);
-
-    let instance = match instance_try {
-        Ok(i) => i,
-        Err(err) => panic!("Couldn't build Instance {:?}", err),
-    };
-
-    instance
-}
 
 fn create_device<'a>(instance: &'a Arc<Instance>) -> Option<PhysicalDevice<'a>> {
-    let local_devices = PhysicalDevice::enumerate(&instance);
 
-    println!("Available Devices: ");
-    let mut device_index = 0;
-
-    for (i, device) in local_devices.enumerate() {
-        println!(
-            "\tIndex {}: Name: {}, Type: {:?}",
-            i,
-            device.name(),
-            device.ty()
-        );
-
-        match device.ty() {
-            PhysicalDeviceType::DiscreteGpu => {
-                device_index = i;
-                
-            }
-            _ => (),
-        }
-    }
-
-    // let physical_device = local_devices.next().expect("No Device Available");
-    // println!("Device Chosen: {:?}", physical_device.name());
-    PhysicalDevice::from_index(&instance, device_index)
 }
 
 fn enable_debug(instance: Arc<Instance>) -> DebugCallback {

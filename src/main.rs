@@ -127,7 +127,7 @@ fn get_queue_family<'a>(physical_device: &'a PhysicalDevice) -> Option<instance:
 
 	for (i, queue_family) in queue_families.enumerate() {
 		println!("\tQueue Family Index: {:?}", i);
-		println!("\t\tID{:?}", queue_family.id());
+		println!("\t\tID {:?}", queue_family.id());
 		println!("\t\tQueue Count: {:?}", queue_family.queues_count());
 		println!("\t\tSupports Graphics: {:?}", queue_family.supports_graphics());
 		println!("\t\tSupports Compute: {:?}", queue_family.supports_compute());
